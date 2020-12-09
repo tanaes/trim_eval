@@ -64,6 +64,8 @@ rule assemble:
         mem_mb=9000
     threads:
         4
+    log:
+        join(outdir, "logs", "assemble.{sample}.{depth}.{trim}.log")
     shell:
         """
         m_gb=$(( {resources.mem_mb} / 1000 ))
@@ -86,6 +88,8 @@ rule quast:
                       'report.tsv')
     conda:
         "env.yaml"
+    log:
+        join(outdir, "logs", "assemble.{sample}.{depth}.{trim}.log")
     shell:
         """
         outdir=$(dirname "{output.report}")
