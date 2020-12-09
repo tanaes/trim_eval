@@ -1,0 +1,11 @@
+indir: "input"
+outdir: "output"
+samples:
+    - foo
+    - bar
+depths:
+    - 10000
+    - 100000
+trims:
+    - 0
+    - 50
