@@ -61,7 +61,7 @@ rule assemble:
     conda:
         "env.yaml"
     resources:
-        mem_mb=9000
+        mem_mb=90000
     threads:
         4
     log:
