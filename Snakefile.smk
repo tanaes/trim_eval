@@ -24,8 +24,8 @@ rule sample:
         "env.yaml"
     shell:
         """
-        seqtk sample -s100 {input.fwd} {wildcards.depth} > {output.fwd}
-        seqtk sample -s100 {input.rev} {wildcards.depth} > {output.rev}
+        seqtk sample -s100 {input.fwd} {wildcards.depth} | gzip > {output.fwd}
+        seqtk sample -s100 {input.rev} {wildcards.depth} | gzip > {output.rev}
         """
 
 
@@ -44,8 +44,8 @@ rule trim:
         "env.yaml"
     shell:
         """
-        seqtk trimfq -e {wildcards.trim} {input.fwd} > {output.fwd}
-        seqtk trimfq -e {wildcards.trim} {input.rev} > {output.rev}
+        seqtk trimfq -e {wildcards.trim} {input.fwd} | gzip > {output.fwd}
+        seqtk trimfq -e {wildcards.trim} {input.rev} | gzip > {output.rev}
         """
 
 
