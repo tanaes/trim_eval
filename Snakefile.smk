@@ -70,6 +70,8 @@ rule assemble:
         """
         outdir=$(dirname "{output.assembly}")
 
+        rm -r {outdir}
+
         megahit -1 {input.fwd} -2 {input.rev} -o $outdir \
         2> {log} 1>&2
         """
@@ -86,7 +88,7 @@ rule quast:
     conda:
         "env.yaml"
     log:
-        join(outdir, "logs", "assemble.{sample}.{depth}.{trim}.log")
+        join(outdir, "logs", "quast.{sample}.{depth}.{trim}.log")
     shell:
         """
         outdir=$(dirname "{output.report}")
