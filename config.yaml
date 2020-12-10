@@ -1,8 +1,14 @@
 indir: "input"
 outdir: "output"
 samples:
-    - foo
-    - bar
+    - A01
+    - A02
+    - A03
+    - A04
+    - A05
+    - A06
+    - A07
+    - A08
 depths:
     - 10000000
     - 6666666
