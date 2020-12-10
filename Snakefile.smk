@@ -57,23 +57,20 @@ rule assemble:
         assembly = join(outdir,
                         'assembled',
                         "{sample}.{depth}.{trim}",
-                        'contigs.fasta')
+                        'final.contigs.fa')
     conda:
         "env.yaml"
     resources:
-        mem_mb=90000
+        mem_mb=50000
     threads:
         4
     log:
         join(outdir, "logs", "assemble.{sample}.{depth}.{trim}.log")
     shell:
         """
-        m_gb=$(( {resources.mem_mb} / 1000 ))
-
         outdir=$(dirname "{output.assembly}")
 
-        spades.py -t {threads} -m $m_gb \
-        -1 {input.fwd} -2 {input.rev} -o $outdir \
+        megahit -1 {input.fwd} -2 {input.rev} -o $outdir \
         2> {log} 1>&2
         """
 
