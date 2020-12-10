@@ -33,13 +33,13 @@ rule trim:
     input:
         fwd = rules.sample.output.fwd,
         rev = rules.sample.output.rev
-    output: 
-        fwd = join(outdir,
-                   'trimmed',
-                   "{sample}.{depth}.{trim}.R1.fastq.gz"),
-        rev = join(outdir,
-                   'trimmed',
-                   "{sample}.{depth}.{trim}.R2.fastq.gz")
+    output:
+        fwd = temp(join(outdir,
+                        'trimmed',
+                        "{sample}.{depth}.{trim}.R1.fastq.gz")),
+        rev = temp(join(outdir,
+                        'trimmed',
+                        "{sample}.{depth}.{trim}.R2.fastq.gz"))
     conda:
         "env.yaml"
     shell:
