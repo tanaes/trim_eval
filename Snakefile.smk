@@ -72,7 +72,7 @@ rule assemble:
 
         rm -r $outdir
 
-        megahit -1 {input.fwd} -2 {input.rev} -o $outdir \
+        megahit -t {threads} -1 {input.fwd} -2 {input.rev} -o $outdir \
         2> {log} 1>&2
         """
 
