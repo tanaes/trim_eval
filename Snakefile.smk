@@ -70,7 +70,7 @@ rule assemble:
         """
         outdir=$(dirname "{output.assembly}")
 
-        rm -r {outdir}
+        rm -r $outdir
 
         megahit -1 {input.fwd} -2 {input.rev} -o $outdir \
         2> {log} 1>&2
